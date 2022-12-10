@@ -1,0 +1,230 @@
+// 20-09-2021
+frontend:
+ -basic layout is done
+ - sidebar and dashboard framework is added
+
+backend:
+ - db structure & data's adding - completed db structure - both
+ - login page(sanjay) & idle timeout(ishu) - completed
+
+// 21-09-2021
+backend team:
+ - added 404error page.
+ - backdrop and card is added   for reuse purpose
+ - added bootstrap spinner
+ - added foodDB, groceryDB, firebase api codes, slight 
+ changes needed, that can be done in further development
+ - added logout functionality in navbar logout button
+
+frontend team:
+ - added food items main page
+ - completed add new page for food items
+ - completed card view for food items
+
+
+22/09/2021
+priority:
+frontend
+ - adding food item ui
+
+backend:
+ - to complete, adding food item to db
+
+23/09/2021
+ - doing merit bodhi stuffs
+ - if branches:
+   - then in each food item, add a field like
+   - foodAvailable: [
+     {
+     branch: chennai,
+     quantity: 10
+     },
+     {
+     branch: vellore,
+     quantity: 20
+     } 
+   ]
+
+
+12/10/2021:
+currentItem: {id, index (1)}
+items = [
+  {
+    id: productId,
+    name: ""
+  }, 
+  {
+    id: dummyId
+  }
+];
+
+
+// 18/10/2021
+ - add food items
+
+
+learning:
+i) set img from input
+<img id="output" src="" width="100" height="100">
+<input name="photo" type="file" accept="image/*" onchange="document.getElementById('output').src = window.URL.createObjectURL(this.files[0])">
+
+
+
+
+
+
+Dry/Baking Goods – rice,cereals, flour, sugar, pasta, mixes
+fruits, vegetables
+Canned goods-biscuits,choc,all snacks
+Beverages(all kind og drinks)
+Personal Care – shampoo, soap, hand soap, shaving cream
+Cleaners – all- purpose, laundry detergent, dishwashing liquid/detergent
+Others
+
+
+order
+Booked,Packed,Delivery
+orders in datewise document
+
+
+27/10/2021
+branches: [
+     {
+     branch: chennai,
+     unit: 10
+     },
+     {
+     branch: vellore,
+     unit: 20
+     } 
+  ]
+
+- STOCK MAINTANCE
+daywise? - yes
+notification or in dashboard, he can change the order status
+usage of realtym db?
+
+- PROFILE
+three places?
+ - super admin role, create, delete -> other users & 
+own users, only super admin can create other admin
+ - manage other admins
+ - update own details...
+ - manage locations for users
+
+- FOOD ITEMS
+crud operations
+location choose? all, chennai, vellore
+(or) based on admin location
+
+- GROCERY
+crud operations
+location choose? all, chennai, vellore
+
+- ORDERS
+ - orders daywise in db - to ask
+ - reviews(to be ask)
+
+
+-----------------
+reusable/Card.js
+take that inputs and replace it with div or p
+
+
+i)
+foodOrders(coll) -> 
+doc(year, month){
+  
+} -> doc(date)
+
+ii)
+foodOrders(coll) -> year -> month -> date
+
+
+groceryOrders
+
+
+https://stackoverflow.com/questions/13571700/get-first-and-last-date-of-current-month-with-javascript-or-jquery
+
+
+https://felixgerschau.com/how-to-communicate-with-service-workers/#service-worker---client-communication
+
+
+
+ques:
+stock MAINTANCE - should show items based on timings or every item
+- food & grocery seperate tab?
+- notification, increase count -> refresh manually (if not, then we will refresh frequently and he cannot fulfil is order)
+
+/////
+Orders:
+dont allow to select future
+
+/// export to excel
+https://dev.to/jasurkurbanovinit/how-to-export-data-to-excel-from-api-using-react-25go
+
+
+
+03-11-2021
+thu, friday - testing
+sat - full testing
+
+mon, tue - IStitch, 
+Thalaivan()
+friday - pending works
+
+
+notifications:
+https://levelup.gitconnected.com/show-push-notifications-in-react-449949e98e01
+
+https://stackoverfl-ow.com/questions/66697332/firebase-web-push-notifications-is-triggered-twice-when-using-onbackgroundmessag
+
+https://www.sentinelstand.com/article/handling-firebase-notification-messages-in-your-web-app
+
+https://stackoverflow.com/questions/41266567/service-worker-warning-in-google-chrome
+
+https://felixgerschau.com/how-to-communicate-with-service-workers/
+
+
+----------
+
+out of stock, each time I should check db - 1 read
+from end user ---- realtime listening the items that are in cart
+db structure - when items in cart, check availability and procced further
+
+-----
+while adding new data, set category as Lunch in addNewForm
+
+
+
+
+doubt in add item ---search bar
+update
+out of stock -code complexity
+
+order -crt order place
+
+
+
+automatic updates breakfacst===
+
+
+branchwise:
+delete 
+
+
+-------------------------------------
+26/11/2021
+
+DGuy - Online, Assigned, Accepted, RideOn, Busy, Offline, 
+[Order-Rejected(DGuy Status - Online, Offline)
+
+Order - booked, preparing, assigned, (accepted, rejected, rideon), delivered, cancelled
+
+
+-------------------------
+to get millisec: - for nov 30
+new Date(2021, 10, 30, 20, 15, 24).getTime()
+
+----------------
+rejected, accepeted

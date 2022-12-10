@@ -1,0 +1,102 @@
+.item-card .overlay {
+  position: absolute;
+  top: 2%;
+  right: 4%;
+  background-color: #ffffff96;
+  color: #000;
+  border-radius: 5px;
+  width: fit-content;
+  height: fit-content;
+  font-size: 15px;
+  padding: 4px 5px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
+
+.item-card .container {
+  width: 75% !important;
+  position: fixed;
+  top: 0;
+  left: 20%;
+  padding: 10px;
+}
+
+.item-card .card {
+  margin: 0 0 30px;
+  position: relative;
+  top: 0;
+  left: 0%;
+  border-radius: 5px;
+  border: 1px solid #777777;
+  padding: 0;
+}
+
+.item-card .card-body {
+  padding: 10px;
+  height: 20%;
+}
+
+.item-card .edit-option {
+  font-size: 20px;
+  display: inline-block;
+  position: absolute;
+  right: 32px;
+  cursor: pointer;
+}
+
+.item-card .trash-option {
+  font-size: 20px;
+  display: inline-block;
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+}
+
+.item-card .card-title {
+  display: inline-block;
+  margin: 0 0 8px;
+}
+
+.item-card .time {
+  font-size: 18px;
+  display: inline-block;
+  padding: 0 10px;
+  margin: 5px 0;
+  color: #0a0a0a;
+  background-color: #dfd4a68f;
+  /* border-radius: 5px; */
+  text-transform: uppercase;
+}
+
+.item-card .food-rating {
+  padding: 0;
+  margin: 0;
+  display: inline;
+}
+
+.item-card .price {
+  margin: 0;
+  float: right;
+  padding-bottom: 0;
+}
+
+.item-card .fa-inr:before {
+  padding: 2px;
+}
+
+/* .item-card #quantity {
+  width: 15%;
+  float: right;
+  padding: 1px;
+  text-align: center;
+}
+
+.item-card input::-webkit-outer-spin-button,
+.item-card input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.item-card input[type="number"] {
+  -moz-appearance: textfield;
+} */
