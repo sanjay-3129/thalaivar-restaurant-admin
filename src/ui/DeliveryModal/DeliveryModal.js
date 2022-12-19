@@ -16,6 +16,7 @@ const ModalOverlay = (props) => {
     let location = authCtx.user.location;
     // console.log("location", location);
     // getDeliveryUsers(location, (users) => {
+    // location = location[0].toUpperCase() + location.substring(1);
     let list = [];
     var unsubscribe = db
       .collection("DeliveryUsers")

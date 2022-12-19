@@ -513,7 +513,8 @@ const ModalOverlay = (props) => {
                     Summer_Drinks_Beverages
                   </option>
                   <option value="soaps">Soaps</option>
-                  <option value="Rice">Rice</option>
+                  <option value="Pharmacy">Pharmacy</option>
+                  <option value="Organics">Organics</option>
                 </select>
               </div>
               <div class="row" style={{ justifyContent: "space-between" }}>

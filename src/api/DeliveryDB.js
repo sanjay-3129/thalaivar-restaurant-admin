@@ -20,13 +20,14 @@ import { db } from "../services/firebase";
 const acceptDeliveryUser = (location, id, setList) => {
   // console.log("Accepted");
   let value = window.confirm("Do you want Accept");
+  // location = location[0].toUpperCase() + location.substring(1);
   if (value) {
     db.collection("DeliveryUsers")
       .doc("Branches")
       .collection(location)
       .doc(id)
       .update({
-        verification: "verified"
+        verification: "verified",
       })
       .then(() => {
         setList(true);
@@ -44,14 +45,15 @@ const acceptDeliveryUser = (location, id, setList) => {
 
 const rejectDeliveryUser = (location, id, setList) => {
   console.log("Accepted");
-  let value = window.confirm("Do you want Reject");
+  let value = window.confirm("Do you want to Reject");
+  // location = location[0].toUpperCase() + location.substring(1);
   if (value) {
     db.collection("DeliveryUsers")
       .doc("Branches")
       .collection(location)
       .doc(id)
       .update({
-        verification: "rejected"
+        verification: "rejected",
       })
       .then(() => {
         setList(true);
@@ -68,24 +70,24 @@ const rejectDeliveryUser = (location, id, setList) => {
 };
 
 const removeDeliveryUser = (location, id, setList) => {
-  console.log("Deleted");
+  // console.log("Deleted");
   let value = window.confirm("Do you want Delete");
+  // location = location[0].toUpperCase() + location.substring(1);
   if (value) {
     console.log("Deleted");
+    db.collection("DeliveryUsers")
+      .doc("Branches")
+      .collection(location)
+      .doc(id)
+      .delete()
+      .then(() => {
+        setList(true);
+      })
+      .catch((e) => {
+        console.log(e);
 
-    // db.collection("DeliveryUsers")
-    // .doc("Branches")
-    // .collection(location)
-    //   .doc(id)
-    //   .delete()
-    //   .then(() => {
-    //     setList(true);
-    //   })
-    //   .catch((e) => {
-    //     console.log(e);
-
-    //     setList(false);
-    //   });
+        setList(false);
+      });
   } else {
     console.log("Not Accepted");
     setList(false);
@@ -96,5 +98,5 @@ export {
   // getDeliveryUsers,
   acceptDeliveryUser,
   rejectDeliveryUser,
-  removeDeliveryUser
+  removeDeliveryUser,
 };

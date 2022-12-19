@@ -22,16 +22,23 @@ const Delivery = () => {
     if (authCtx.user !== null) {
       let deliveryList = [];
       let location = authCtx.user.location;
+      // location = location[0].toUpperCase() + location.substring(1);
+      console.log("location: ", location);
       var unsubscribe = db
         .collection("DeliveryUsers")
         .doc("Branches")
         .collection(location)
         .onSnapshot((docs) => {
           docs.forEach((doc) => {
-            deliveryList.push(doc.data());
+            let data = doc.data();
+            if (data.user_image_url === "") {
+              data.user_image_url =
+                "https://www.w3schools.com/howto/img_avatar.png";
+            }
+            deliveryList.push(data);
           });
           // getDeliveryUsers(true, location, (deliveryList) => {
-          // console.log("deliveryList", deliveryList);
+          console.log("deliveryList", deliveryList);
           let newD = [];
           let verified = [];
           let rejected = [];
@@ -104,22 +111,22 @@ const Delivery = () => {
     rejectDeliveryUser(authCtx.user.location, user.user_id, (isRejected) => {
       if (isRejected) {
         console.log("rejected");
-        // let updatedUser = {
-        //   ...user,
-        //   userStatus: "",
-        // };
-        // setDeliveryUsers((prevState) => {
-        //   let newD = [...prevState.newD];
-        //   let rejected = [...prevState.rejected];
-        //   let index = newD.findIndex((u) => u.user_id === user.user_id);
-        //   newD.splice(index, 1);
-        //   rejected.push(updatedUser);
-        //   return {
-        //     ...prevState,
-        //     newD: newD,
-        //     rejected: rejected,
-        //   };
-        // });
+        let updatedUser = {
+          ...user,
+          userStatus: "",
+        };
+        setDeliveryUsers((prevState) => {
+          let newD = [...prevState.newD];
+          let rejected = [...prevState.rejected];
+          let index = newD.findIndex((u) => u.user_id === user.user_id);
+          newD.splice(index, 1);
+          rejected.push(updatedUser);
+          return {
+            ...prevState,
+            newD: newD,
+            rejected: rejected,
+          };
+        });
       } else {
         console.log("error-not rejected");
       }
@@ -129,16 +136,19 @@ const Delivery = () => {
   const removeHandler = (user) => {
     removeDeliveryUser(authCtx.user.location, user.user_id, (isRejected) => {
       if (isRejected) {
-        console.log("rejected");
+        console.log("removed");
 
         setDeliveryUsers((prevState) => {
-          // let newD = [...prevState.newD];
           let rejected = [...prevState.rejected];
           let index = rejected.findIndex((u) => u.user_id === user.user_id);
           rejected.splice(index, 1);
+          return {
+            ...prevState,
+            rejected: rejected,
+          };
         });
       } else {
-        console.log("error-not rejected");
+        console.log("error-not removed");
       }
     });
   };
@@ -188,7 +198,7 @@ const Delivery = () => {
       </div> */}
         <Switch>
           <Route path="/home/delivery/new">
-            <div className="newreq row">
+            <div className="row newreq">
               <DeliveryCard
                 users={deliveryUsers.newD}
                 acceptHandler={acceptHandler}
