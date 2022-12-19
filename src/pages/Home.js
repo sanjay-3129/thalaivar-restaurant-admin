@@ -29,6 +29,7 @@ function Home(props) {
         // Sign-out successful.
         console.log("signed out successfully...");
         // alert("signed out");
+        localStorage.removeItem("userId");
         props.history.replace("/");
       })
       .catch((error) => {

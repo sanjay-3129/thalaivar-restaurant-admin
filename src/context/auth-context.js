@@ -9,12 +9,12 @@ const AuthContext = React.createContext({
     role: "",
     email: "",
     img: "",
-    phone: ""
+    phone: "",
   },
   isLoggedIn: false,
   setUser: (user) => {},
   setIsLoggedIn: () => {},
-  logout: () => {}
+  logout: () => {},
 });
 
 export const AuthContextProvider = (props) => {
@@ -51,21 +51,22 @@ export const AuthContextProvider = (props) => {
   };
 
   const logoutHandler = () => {
-    console.log("logout");
+    // console.log("logout");
     // return true;
-    // auth
-    //   .signOut()
-    //   .then(() => {
-    //     // Sign-out successful.
-    //     console.log("signed out successfully...");
-    //     // alert("signed out");
-    //     return true;
-    //   })
-    //   .catch((error) => {
-    //     // An error happened.
-    //     console.log(error);
-    //     return false;
-    //   });
+    auth
+      .signOut()
+      .then(() => {
+        // Sign-out successful.
+        console.log("signed out successfully...");
+        // alert("signed out");
+        localStorage.removeItem("userId");
+        return true;
+      })
+      .catch((error) => {
+        // An error happened.
+        console.log(error);
+        return false;
+      });
   };
 
   return (
@@ -75,7 +76,7 @@ export const AuthContextProvider = (props) => {
         setUser: setMyUser,
         isLoggedIn: isLoggedIn,
         setIsLoggedIn: setLoggedIn,
-        logout: logoutHandler
+        logout: logoutHandler,
       }}
     >
       {props.children}
