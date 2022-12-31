@@ -169,9 +169,7 @@ const AddNewForm = (props) => {
                 </div>
 
                 <div className="inner-row">
-                  <label htmlFor="productId">
-                    Enter Product Id
-                  </label>
+                  <label htmlFor="productId">Enter Product Id</label>
                   <input
                     type="text"
                     id="productId"

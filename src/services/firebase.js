@@ -13,7 +13,7 @@ const config = {
   storageBucket: "thalaivan-restaurant.appspot.com",
   messagingSenderId: "1084918476722",
   appId: "1:1084918476722:web:1502d45a5f59d483977eab",
-  measurementId: "G-ZKVE7EMKFJ"
+  measurementId: "G-ZKVE7EMKFJ",
 };
 
 const restaurant = firebase.initializeApp(config);
@@ -31,7 +31,7 @@ export const getToken = async (setTokenFound) => {
   let currentToken = "";
   try {
     currentToken = await messaging.getToken({ vapidKey: publicKey });
-    // console.log("Current Token", currentToken);
+    console.log("Current Token", currentToken);
     if (currentToken) {
       setTokenFound(true);
     } else {

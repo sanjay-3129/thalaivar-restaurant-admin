@@ -82,6 +82,9 @@ const OrderMaintain = (props) => {
                   <p className="add">
                     {order.userDetails?.userAddress ||
                       order.order_address?.userAddress}
+                    <br />
+                    Phone:{" "}
+                    {order.userDetails?.phone || order.order_address?.phone}
                   </p>
                   <p className="date">
                     {`${day}-${month}-${year}`} {hours}:{mins} {timePeriod}
