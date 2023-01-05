@@ -134,6 +134,7 @@ const billPaidOrder = (order, type, location, isAdded) => {
         });
     });
 };
+
 const createDocumentIds = (days, month, year) => {
   let docIds = [];
   for (let i = 1; i <= days; i++) {
@@ -673,6 +674,44 @@ const updateOrderStatus = (type, location, order, status, isUpdated) => {
   console.log("updateOrderStatus", location, order.id);
 };
 
+const getRestaurantStatus = (location, sendData) => {
+  db.collection("meta")
+    .doc("metaDetails")
+    .get()
+    .then((doc) => {
+      console.log(doc.data());
+      sendData({
+        status: "success",
+        data: doc.data().isHoliday[`${location}`],
+      });
+    })
+    .catch((e) => {
+      console.log(e);
+      sendData({
+        status: "failure",
+        error: e,
+      });
+    });
+};
+
+const setRestaurantStatus = (location, isRestaurantOpen, sendData) => {
+  var isHoliday = {};
+  isHoliday[`isHoliday.${location}`] = isRestaurantOpen;
+
+  console.log(isHoliday, location, isRestaurantOpen);
+
+  db.collection("meta")
+    .doc("metaDetails")
+    .update(isHoliday)
+    .then(() => {
+      sendData(true);
+    })
+    .catch((e) => {
+      console.log(e);
+      sendData(false);
+    });
+};
+
 // Get Orders Based On Parameters
 // const getOrdersBP = (type, location, setOrders) => {};
 
@@ -687,6 +726,8 @@ export {
   billPaidOrder,
   removeListener,
   getDeliveredOrders,
+  getRestaurantStatus,
+  setRestaurantStatus,
 };
 
 // const updateOrderStatus = (date, type, location, order, status) => {

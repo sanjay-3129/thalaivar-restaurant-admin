@@ -102,7 +102,7 @@ const OrderMaintain = (props) => {
                   <p className="tq">{order.noOfItems}</p>
                   <p className="tp">
                     <i class="fas fa-rupee"></i>
-                    {order.totalPrice}
+                    {order.totalPrice + order.deliveryCharge}
                   </p>
                   <p className="status">
                     {/* <span className="new"> */}
